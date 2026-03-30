@@ -1,0 +1,28 @@
+name: security-pipeline
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  security-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run Trivy filesystem scan
+        uses: aquasecurity/trivy-action@0.24.0
+        with:
+          scan-type: fs
+          scan-ref: .
+          severity: HIGH,CRITICAL
+
+      - name: Run Checkov
+        uses: bridgecrewio/checkov-action@master
+        with:
+          directory: terraform
+
+      - name: Run Gitleaks
+        uses: gitleaks/gitleaks-action@v2
