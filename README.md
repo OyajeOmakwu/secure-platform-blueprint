@@ -84,8 +84,8 @@ This platform is designed to mitigate common cloud-native risks:
 ---
 
 ## 📂 Repository Structure
-terraform/ # Infrastructure modules and environments
-kubernetes/ # Base manifests and security policies
+- `terraform/` - Infrastructure modules and environments
+- `kubernetes/` # Base manifests and security policies
 ci/ # CI/CD security pipeline
 app/ # Sample application (Flask)
 docs/ # Architecture and design docs
