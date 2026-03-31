@@ -23,4 +23,4 @@ Secure Platform Blueprint is a portfolio project that demonstrates how to design
 This repository is organized into application, infrastructure, Kubernetes, CI/CD, documentation, and examples to reflect a real platform security engineering workflow.
 
 ## Status
-In progress — built as a stepwise platform security portfolio project.
+This repository demonstrates a reference implementation of a secure-by-default internal platform.
