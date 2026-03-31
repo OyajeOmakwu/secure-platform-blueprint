@@ -22,6 +22,30 @@ It simulates how platform teams enable developers to deploy applications **quick
 
 ![Architecture](docs/architecture.png)
 
+## 🔐 Architecture Overview
+
+This platform follows a **defense-in-depth and zero trust model**, enforcing security across multiple layers:
+
+- **Supply Chain Security (CI/CD)**  
+  Security checks (Trivy, Checkov, Gitleaks) are executed during build pipelines to prevent vulnerable or misconfigured artifacts from being deployed.
+
+- **Infrastructure Security (Terraform)**  
+  Infrastructure is provisioned using reusable Terraform modules with embedded security controls and validation.
+
+- **Runtime Security (Kubernetes + Kyverno)**  
+  Kubernetes enforces workload security through admission policies, ensuring non-root execution, restricted privileges, and secure configurations.
+
+- **Zero Trust Networking (Istio Service Mesh)**  
+  Service-to-service communication is secured using mutual TLS (mTLS), enforcing strong identity and encrypted traffic between workloads.
+
+- **Secrets Management (Vault)**  
+  Secrets are dynamically injected into workloads using Vault, eliminating hardcoded credentials and reducing exposure risk.
+
+- **Observability & Detection**  
+  Logs, metrics, and alerts provide visibility into system behavior and enable rapid detection and response.
+
+This layered approach ensures that security is enforced **at build time, deploy time, and runtime**, reducing systemic risk across the platform.
+
 ---
 
 ## ⚙️ How It Works
